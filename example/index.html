@@ -1,0 +1,39 @@
+<html ng-app="app">
+    <head>
+        <meta charset="utf-8">
+        <title>Angular Loading Button</title>
+        <meta name="viewport" content="width=device-width">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body ng-controller="AppController">
+    <div class="container">
+        <div class="row">
+            <pre>{{options.query}}</pre>
+            <div query-builder="options"></div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="../src/angular-query-builder.js"></script>
+    <script type="text/javascript">
+        angular.module('app', [
+            'ngQueryBuilder',
+        ])
+            .controller('AppController', AppController);
+
+        AppController.$inject = ['$scope'];
+        function AppController($scope) {
+            $scope.options = {
+                fields: [
+                    { name: 'Firstname' },
+                    { name: 'Lastname' },
+                    { name: 'Birthdate' },
+                    { name: 'City' },
+                    { name: 'Country' },
+                ],
+            };
+        }
+    </script>
+    </body>
+</html>
