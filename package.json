@@ -1,0 +1,24 @@
+{
+  "name": "angular-query-builder",
+  "version": "1.0.0",
+  "description": "Query builder as JSON from angular directive",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tiste/angular-query-builder.git"
+  },
+  "keywords": [
+    "angular",
+    "module",
+    "query-builder"
+  ],
+  "author": "Baptiste Lecocq <hello@tiste.io> (http://tiste.io)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tiste/angular-query-builder/issues"
+  },
+  "homepage": "https://github.com/tiste/angular-query-builder#readme"
+}
