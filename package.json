@@ -33,6 +33,7 @@
     "baggage-loader": "0.2.4",
     "clean-webpack-plugin": "0.1.9",
     "cross-env": "2.0.0",
+    "gh-pages-webpack-plugin": "1.0.1",
     "html-loader": "0.4.3",
     "html-webpack-plugin": "2.22.0",
     "ng-annotate-loader": "0.1.0",

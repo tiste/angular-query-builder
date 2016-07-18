@@ -4,12 +4,15 @@ const path = require('path');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const GhPagesWebpackPlugin = require('gh-pages-webpack-plugin');
 
 const NODE_ENV = process.env.NODE_ENV || 'production';
 
 module.exports = function (_path) {
     const webpackConfig = {
-        entry: path.join(_path, 'src', 'angular-query-builder.js'),
+        entry: {
+            'angular-query-builder': path.join(_path, 'src', 'angular-query-builder'),
+        },
 
         output: {
             path: 'dist',
@@ -54,6 +57,10 @@ module.exports = function (_path) {
             new webpack.optimize.AggressiveMergingPlugin({
                 moveToParents: true,
             }),
+            new HtmlWebpackPlugin({
+                filename: 'index.html',
+                template: path.join(_path, 'example', 'index.ejs'),
+            }),
         ],
     };
 
@@ -70,16 +77,15 @@ module.exports = function (_path) {
                 warnings: false,
                 sourceMap: true,
             }),
+            new GhPagesWebpackPlugin({
+                path: 'dist',
+            }),
         ]);
     }
 
     if (NODE_ENV === 'development') {
         webpackConfig.plugins = webpackConfig.plugins.concat([
             new webpack.HotModuleReplacementPlugin(),
-            new HtmlWebpackPlugin({
-                filename: 'index.html',
-                template: path.join(_path, 'example', 'index.ejs'),
-            }),
         ]);
     }
 

@@ -15,7 +15,7 @@ import queryBuilderGroupDirectiveTpl from './query-builder-group-directive.html'
             },
             template: '<div query-builder-group="options" group="options._query.group"></div>',
             link: function (scope) {
-                var defaults = {
+                const defaults = {
                     operators: [
                         { name: 'AND', value: '$and' },
                         { name: 'OR', value: '$or' },
@@ -33,46 +33,46 @@ import queryBuilderGroupDirectiveTpl from './query-builder-group-directive.html'
                 scope.options = angular.extend({}, defaults, scope.options);
 
                 scope.options._query = {
-                    'group': {
-                        'operator': scope.options.operators[0],
-                        'rules': [],
+                    group: {
+                        operator: scope.options.operators[0],
+                        rules: [],
                     },
                 };
 
                 scope.format = format;
 
                 function format(group) {
-                    var obj = {};
-                    var part = [];
+                    const rulesWrapper = [];
+                    let operatorsWrapper = {};
 
-                    for (var i = 0; i < group.rules.length; i++) {
-                        obj[group.operator.value] = part;
+                    for (let i = 0; i < group.rules.length; i++) {
+                        operatorsWrapper[group.operator.value] = rulesWrapper;
 
                         if (group.rules[i].group) {
-                            part.push(format(group.rules[i].group));
+                            rulesWrapper.push(format(group.rules[i].group));
                         }
                         else {
-                            var el = {};
+                            const el = {};
                             el[group.rules[i].field.name] = {};
                             el[group.rules[i].field.name][group.rules[i].condition.value] = group.rules[i].data;
-                            part.push(el);
+                            rulesWrapper.push(el);
                         }
                     }
 
-                    for (var firstKey in obj) break;
+                    const firstKey = Object.keys(operatorsWrapper)[0];
 
-                    if (firstKey && obj[firstKey].length < 2) {
-                        obj = obj[firstKey].pop();
+                    if (firstKey && operatorsWrapper[firstKey].length < 2) {
+                        operatorsWrapper = operatorsWrapper[firstKey].pop();
                     }
 
-                    return obj;
+                    return operatorsWrapper;
                 }
 
                 scope.$watch('options._query', function (query) {
                     scope.options.query = scope.format(query.group);
                 }, true);
             },
-        }
+        };
     }
 
     function queryBuilderGroup($compile) {
@@ -85,9 +85,9 @@ import queryBuilderGroupDirectiveTpl from './query-builder-group-directive.html'
                 options: '=queryBuilderGroup',
             },
             templateUrl: queryBuilderGroupDirectiveTpl,
-            compile: function (element, attrs) {
-                var compiledContents;
-                var content = element.contents().remove();
+            compile: function (el) {
+                let compiledContents;
+                const content = el.contents().remove();
 
                 return function (scope, element, attrs) {
                     scope.addCondition = addCondition;
@@ -112,7 +112,7 @@ import queryBuilderGroupDirectiveTpl from './query-builder-group-directive.html'
                             group: {
                                 operator: scope.options.operators[0],
                                 rules: [],
-                            }
+                            },
                         });
                     }
 
@@ -128,7 +128,7 @@ import queryBuilderGroupDirectiveTpl from './query-builder-group-directive.html'
                         element.append(clone);
                     });
                 }
-            }
+            },
         };
     }
 })();
