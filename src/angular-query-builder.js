@@ -1,3 +1,5 @@
+import queryBuilderGroupDirectiveTpl from './query-builder-group-directive.html';
+
 (function () {
     'use strict';
 
@@ -73,15 +75,16 @@
         }
     }
 
-    queryBuilderGroup.$inject = ['$compile'];
     function queryBuilderGroup($compile) {
+        'ngInject';
+
         return {
             restrict: 'AE',
             scope: {
                 group: '=',
                 options: '=queryBuilderGroup',
             },
-            templateUrl: '/src/queryBuilderGroupDirective.html',
+            templateUrl: queryBuilderGroupDirectiveTpl,
             compile: function (element, attrs) {
                 var compiledContents;
                 var content = element.contents().remove();

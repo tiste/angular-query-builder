@@ -1,9 +1,9 @@
-<html ng-app="app">
+<html ng-app="app" ng-strict-di>
     <head>
         <meta charset="utf-8">
         <title>Angular Loading Button</title>
         <meta name="viewport" content="width=device-width">
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body ng-controller="AppController">
     <div class="container">
@@ -15,7 +15,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-    <script src="../src/angular-query-builder.js"></script>
     <script type="text/javascript">
         angular.module('app', [
             'ngQueryBuilder',
