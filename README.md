@@ -6,6 +6,14 @@ Query builder as JSON from angular directive
 
 `$ npm install -SE angular-query-builder`
 
+Add it as an angular dependency:
+
+```js
+angular.module('app', [
+    'ngQueryBuilder',
+]);
+```
+
 ## Usage
 
 Simply define an options object:
@@ -26,7 +34,7 @@ $scope.options = {
         { name: 'OR', value: '$or' },
     ],
 
-    // ...and conditions
+    // ... and conditions
     conditions: [
         { name: 'equal', value: '$eq' },
         { name: 'is not equal', value: '$neq' },
@@ -52,7 +60,7 @@ Just run `npm run dev` to start webserver, and build everything with `npm run bu
 
 ## Want to help?
 
-1. [Fork it](http://github.com/tiste/angular-query-builder/fork)
+1. [Fork it](https://github.com/tiste/angular-query-builder/fork)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes using [commitizen](https://github.com/commitizen/cz-cli) (`git commit -am 'feat: add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
