@@ -85,11 +85,11 @@ import queryBuilderGroupDirectiveTpl from './query-builder-group-directive.html'
                 options: '=queryBuilderGroup',
             },
             templateUrl: queryBuilderGroupDirectiveTpl,
-            compile: function (el) {
+            compile: function (tElement) {
                 let compiledContents;
-                const content = el.contents().remove();
+                const content = tElement.contents().remove();
 
-                return function (scope, element, attrs) {
+                return function (scope, iElement) {
                     scope.addCondition = addCondition;
                     scope.removeCondition = removeCondition;
                     scope.addGroup = addGroup;
@@ -125,7 +125,7 @@ import queryBuilderGroupDirectiveTpl from './query-builder-group-directive.html'
                     }
 
                     compiledContents(scope, function(clone){
-                        element.append(clone);
+                        iElement.append(clone);
                     });
                 }
             },
