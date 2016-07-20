@@ -12,6 +12,7 @@ import queryBuilderGroupDirectiveTpl from './query-builder-group-directive.html'
             restrict: 'AE',
             scope: {
                 options: '=queryBuilder',
+                templateUrl: '=?',
             },
             template: '<div query-builder-group="options" group="options._query.group"></div>',
             link: function (scope) {
@@ -28,6 +29,7 @@ import queryBuilderGroupDirectiveTpl from './query-builder-group-directive.html'
                         { name: 'greater than', value: '$gt' },
                         { name: 'greater than or equal', value: '$gte' },
                     ],
+                    templateUrl: scope.templateUrl,
                 };
 
                 scope.options = angular.extend({}, defaults, scope.options);
@@ -84,7 +86,7 @@ import queryBuilderGroupDirectiveTpl from './query-builder-group-directive.html'
                 group: '=',
                 options: '=queryBuilderGroup',
             },
-            templateUrl: queryBuilderGroupDirectiveTpl,
+            template: '<div ng-include="getTemplate()"></div>',
             compile: function (tElement) {
                 let compiledContents;
                 const content = tElement.contents().remove();
@@ -94,6 +96,7 @@ import queryBuilderGroupDirectiveTpl from './query-builder-group-directive.html'
                     scope.removeCondition = removeCondition;
                     scope.addGroup = addGroup;
                     scope.removeGroup = removeGroup;
+                    scope.getTemplate = getTemplate;
 
                     function addCondition() {
                         scope.group.rules.push({
@@ -118,6 +121,10 @@ import queryBuilderGroupDirectiveTpl from './query-builder-group-directive.html'
 
                     function removeGroup() {
                         'group' in scope.$parent && scope.$parent.group.rules.splice(scope.$parent.$index, 1);
+                    }
+
+                    function getTemplate() {
+                        return scope.options.templateUrl || queryBuilderGroupDirectiveTpl;
                     }
 
                     if (!compiledContents) {
