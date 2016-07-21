@@ -54,6 +54,24 @@ Then add the directive to your view:
 
 You can now get the result as `{{options.query}}`
 
+### Templating
+
+You can use your own template by setting a `templateUrl` in the directive:
+
+```html
+<div query-builder="options" template-url="templateUrl"></div>
+```
+
+or
+
+```js
+$scope.options = {
+    templateUrl: '/src/query-builder-group-directive.html',
+};
+```
+
+> The template needs to be recursive. You can have a look [at the project one](https://github.com/tiste/angular-query-builder/blob/master/src/query-builder-group-directive.html).
+
 ## Build
 
 Just run `npm run dev` to start webserver, and build everything with `npm run build`
