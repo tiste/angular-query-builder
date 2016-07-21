@@ -9,7 +9,7 @@
     <div class="container" style="margin-top: 10px;">
         <div class="row">
             <div class="col-sm-8">
-                <div query-builder="options"></div>
+                <div query-builder="options" template-url="templateUrl"></div>
             </div>
 
             <div class="col-sm-4">
@@ -37,6 +37,8 @@
                     { name: 'Country' },
                 ],
             };
+
+            $scope.templateUrl = '/src/query-builder-group-directive.html';
         }
     </script>
     <script type="text/javascript" src="angular-query-builder.js"></script></body>
