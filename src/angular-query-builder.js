@@ -55,8 +55,8 @@ import queryBuilderGroupDirectiveTpl from './query-builder-group-directive.html'
                         }
                         else {
                             const el = {};
-                            el[group.rules[i].field.name] = {};
-                            el[group.rules[i].field.name][group.rules[i].condition.value] = group.rules[i].data;
+                            el[group.rules[i].field.value] = {};
+                            el[group.rules[i].field.value][group.rules[i].condition.value] = group.rules[i].data;
                             rulesWrapper.push(el);
                         }
                     }
