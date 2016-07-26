@@ -1,6 +1,6 @@
 <div class="alert alert-info">
     <div class="form-inline">
-        <select ng-options="o.name for o in options.operators" ng-model="group.operator" class="form-control input-sm"></select>
+        <select ng-options="o.name for o in options.operators track by o.value" ng-model="group.operator" class="form-control input-sm"></select>
         <button ng-click="addCondition()" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-plus-sign"></span> Add Condition</button>
         <button ng-click="addGroup()" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-plus-sign"></span> Add Group</button>
         <button ng-click="removeGroup()" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-minus-sign"></span> Remove Group</button>
@@ -14,9 +14,9 @@
                 </div>
                 <div ng-switch-default>
                     <div class="form-inline">
-                        <select ng-options="f.name for f in options.fields" ng-model="rule.field" class="form-control input-sm"></select>
-                        <select ng-options="c.name for c in options.conditions" ng-model="rule.condition" class="form-control input-sm"></select>
-                        <input type="text" ng-model="rule.data" class="form-control input-sm"/>
+                        <select ng-options="f.name for f in options.fields track by f.value" ng-model="rule.field" class="form-control input-sm"></select>
+                        <select ng-options="c.name for c in options.conditions track by c.value" ng-model="rule.condition" class="form-control input-sm"></select>
+                        <input type="text" ng-model="rule.data" class="form-control input-sm" attrs="rule.field.attrs">
                         <button ng-click="removeCondition($index)" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-minus-sign"></span></button>
                     </div>
                 </div>

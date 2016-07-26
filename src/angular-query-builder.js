@@ -5,7 +5,8 @@ import queryBuilderGroupDirectiveTpl from './query-builder-group-directive.html'
 
     angular.module('ngQueryBuilder', [])
         .directive('queryBuilder', queryBuilder)
-        .directive('queryBuilderGroup', queryBuilderGroup);
+        .directive('queryBuilderGroup', queryBuilderGroup)
+        .directive('attrs', attrs);
 
     function queryBuilder() {
         return {
@@ -135,6 +136,22 @@ import queryBuilderGroupDirectiveTpl from './query-builder-group-directive.html'
                         iElement.append(clone);
                     });
                 }
+            },
+        };
+    }
+
+    function attrs() {
+        return {
+            restrict: 'A',
+            scope: {
+                list: '=attrs',
+            },
+            link: function (scope, element) {
+                scope.$watch('list', function (list) {
+                    for (const attr in scope.list) {
+                        element.attr(attr, scope.list[attr]);
+                    }
+                });
             },
         };
     }
