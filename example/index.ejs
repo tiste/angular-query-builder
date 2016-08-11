@@ -1,44 +1,44 @@
 <html ng-app="app" ng-strict-di>
     <head>
         <meta charset="utf-8">
-        <title>Angular Loading Button</title>
+        <title>Angular Query Builder</title>
         <meta name="viewport" content="width=device-width">
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body ng-controller="AppController">
-    <div class="container" style="margin-top: 10px;">
-        <div class="row">
-            <div class="col-sm-8">
-                <div query-builder="options" template-url="templateUrl"></div>
-            </div>
+        <div class="container" style="margin-top: 10px;">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div query-builder="options" template-url="templateUrl"></div>
+                </div>
 
-            <div class="col-sm-4">
-                <pre>{{options.query | json}}</pre>
+                <div class="col-sm-4">
+                    <pre>{{options.query | json}}</pre>
+                </div>
             </div>
         </div>
-    </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-    <script type="text/javascript">
-        angular.module('app', [
-            'ngQueryBuilder',
-        ])
-            .controller('AppController', AppController);
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+        <script type="text/javascript">
+            angular.module('app', [
+                'ngQueryBuilder',
+            ])
+                .controller('AppController', AppController);
 
-        AppController.$inject = ['$scope'];
-        function AppController($scope) {
-            $scope.options = {
-                fields: [
-                    { name: 'Firstname', value: 'firstname', attrs: { type: 'text' } },
-                    { name: 'Birthdate', value: 'birthdate', attrs: { type: 'date' } },
-                    { name: 'City', value: 'city', attrs: { type: 'text', 'required': true } },
-                    { name: 'Country', value: 'country', attrs: { type: 'text' } },
-                ],
-            };
+            AppController.$inject = ['$scope'];
+            function AppController($scope) {
+                $scope.options = {
+                    fields: [
+                        { name: 'Firstname', value: 'firstname', attrs: { type: 'text' } },
+                        { name: 'Birthdate', value: 'birthdate', attrs: { type: 'date' } },
+                        { name: 'City', value: 'city', attrs: { type: 'text', 'required': true } },
+                        { name: 'Country', value: 'country', attrs: { type: 'text' } },
+                    ],
+                };
 
-            $scope.templateUrl = '/src/query-builder-group-directive.html';
-        }
-    </script>
+                $scope.templateUrl = '/src/query-builder-group-directive.html';
+            }
+        </script>
     </body>
 </html>
